@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Chatbot</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            text-align: center;
+        }
+
+        .chat-box {
+            width: 400px;
+            margin: auto;
+            margin-top: 50px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 70%;
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px 12px;
+        }
+
+        .response {
+            margin-top: 15px;
+            padding: 10px;
+            background: #eaf2ff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="chat-box">
+    <h2>🤖 Child Nutrition AI Assistant</h2>
+
+    <form method="POST">
+        <input type="text" name="message" placeholder="Ask about child health..." required>
+        <button type="submit">Send</button>
+    </form>
+
+    {% if response %}
+        <div class="response">
+            <strong>Bot:</strong> {{ response }}
+        </div>
+    {% endif %}
+
+    <br>
+    <a href="/admin_dashboard">⬅ Back</a>
+</div>
+
+</body>
+</html>

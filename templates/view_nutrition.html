@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<table border="1">
+
+<tr>
+    <th>Breakfast</th>
+    <th>Lunch</th>
+    <th>Dinner</th>
+    <th>Milk</th>
+    <th>Water</th>
+
+    {% if session['role'] == 'admin' %}
+    <th>Action</th>
+    {% endif %}
+</tr>
+
+{% for row in data %}
+<tr>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+    <td>{{ row[4] }}</td>
+    <td>{{ row[5] }}</td>
+    <td>{{ row[6] }}</td>
+
+    {% if session['role'] == 'admin' %}
+    <td>
+        <a href="/delete_nutrition/{{ row[0] }}" 
+           onclick="return confirm('Delete this record?')" 
+           class="delete-btn">
+           Delete
+        </a>
+    </td>
+    {% endif %}
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>

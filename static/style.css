@@ -1,0 +1,307 @@
+/* 🌐 GLOBAL */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* 🧾 HEADINGS */
+h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+h3 {
+    margin: 5px 20px;
+}
+
+/* 📦 CONTAINER */
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+/* 🔝 TOP BAR */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+/* 🔘 BUTTONS */
+.btn {
+    padding: 6px 12px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 13px;
+    margin: 2px;
+    display: inline-block;
+}
+
+/* Button colors */
+.btn { background-color: #3498db; }
+.btn:hover { opacity: 0.85; }
+
+.edit { background-color: #2980b9; }
+.delete { background-color: #e74c3c; }
+.add { background-color: #2ecc71; }
+.view { background-color: #9b59b6; }
+.report { background-color: #f39c12; }
+.back-btn { background-color: #34495e; color: white; padding: 6px 12px; border-radius: 5px; text-decoration: none; }
+
+/* 🔍 SEARCH */
+.search-box {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.search-form {
+    display: flex;
+    gap: 5px;
+}
+
+.search-form input {
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.search-form button {
+    padding: 6px 10px;
+    border: none;
+    background: #3498db;
+    color: white;
+    border-radius: 4px;
+}
+
+/* 📊 TABLE */
+table {
+    width: 95%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+}
+
+th {
+    background: #2c3e50;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 🔥 ACTION BUTTONS */
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+}
+
+/* 🚨 STATUS COLORS */
+.severe {
+    color: red;
+    font-weight: bold;
+}
+
+.mild {
+    color: orange;
+    font-weight: bold;
+}
+
+.normal {
+    color: green;
+    font-weight: bold;
+}
+
+/* 📦 FORMS */
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+input, select {
+    padding: 8px;
+    margin: 5px;
+    width: 200px;
+}
+
+button {
+    padding: 8px 15px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/* 🤖 CHATBOT */
+.chat-box {
+    width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+}
+
+.response {
+    margin-top: 15px;
+    padding: 10px;
+    background: #eaf2ff;
+    border-radius: 5px;
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 768px) {
+    table {
+        font-size: 12px;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-box {
+        justify-content: center;
+    }
+}
+.chart-box {
+    width: 350px;
+    height: 350px;
+    margin: 30px auto;
+}
+/* General */
+body {
+    font-family: 'Segoe UI', Arial;
+    margin: 0;
+    background: #f4f6f9;
+}
+
+/* Header */
+.header {
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 22px;
+}
+
+/* Container */
+.container {
+    width: 95%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+/* Card Box */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    background: #007bff;
+    color: white;
+    padding: 12px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background: #f1f1f1;
+}
+
+/* Buttons */
+button {
+    padding: 7px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 3px;
+    font-size: 13px;
+}
+
+/* Button Colors */
+.btn-edit {
+    background: #28a745;
+    color: white;
+}
+
+.btn-delete {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-nutrition {
+    background: #17a2b8;
+    color: white;
+}
+
+.btn-predict {
+    background: #6f42c1;
+    color: white;
+}
+
+.btn-logout {
+    background: #343a40;
+    color: white;
+    float: right;
+}
+
+/* Hover Effects */
+button:hover {
+    opacity: 0.85;
+}
+
+/* Status Colors */
+.status-healthy {
+    color: green;
+    font-weight: bold;
+}
+
+.status-risk {
+    color: red;
+    font-weight: bold;
+}
+
+/* Add Child Button */
+.add-btn {
+    background: #007bff;
+    color: white;
+    padding: 10px 18px;
+    margin-bottom: 15px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    table {
+        font-size: 12px;
+    }
+
+    button {
+        padding: 5px;
+        font-size: 11px;
+    }
+}

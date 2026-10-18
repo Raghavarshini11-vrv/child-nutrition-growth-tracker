@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<h2>Admin Dashboard</h2>
+<h3>Welcome, {{ session['user'] }}</h3>
+
+<!-- 🔍 SEARCH -->
+<div class="search-box">
+    <form method="GET" action="/admin_dashboard">
+        <input type="text" name="search" placeholder="Search child name">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<br>
+
+<a href="/add" class="btn">Add Child</a>
+<a href="/nutrition_chart" class="btn">View Chart</a>
+<a href="/download_report" class="btn report">Download Report</a>
+
+<table>
+<tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>Weight</th>
+    <th>Height</th>
+    <th>BMI</th>
+    <th>Status</th>
+    <th>Actions</th>
+    <th>AI Prediction</th>
+</tr>
+
+{% for child in children %}
+<tr>
+
+    <!-- NAME -->
+    <td>{{ child.name }}</td>
+
+    <!-- AGE -->
+    <td>
+        {% set parts = child.age.split(' ') %}
+        
+        {% if parts[0] != '0' %}
+            {{ parts[0] }} Years
+        {% endif %}
+        
+        {% if parts|length > 2 and parts[2] != '0' %}
+            {{ parts[2] }} Months
+        {% endif %}
+    </td>
+
+    <td>{{ child.gender }}</td>
+    <td>{{ child.weight }}</td>
+    <td>{{ child.height }}</td>
+
+    <!-- ✅ BMI -->
+    <td>
+        {% if child.bmi is not none %}
+            {{ child.bmi }}
+        {% else %}
+            -
+        {% endif %}
+    </td>
+
+    <!-- ✅ MALNUTRITION STATUS (UPDATED) -->
+    <td>
+        {% if child.status == "Severe Malnutrition" %}
+            🔴 Severe Malnutrition
+        {% elif child.status == "Mild Malnutrition" %}
+            🟠 Mild Malnutrition
+        {% elif child.status == "Normal" %}
+            🟢 Normal
+        {% elif child.status == "Overweight" %}
+            🟡 Overweight
+        {% elif child.status == "Obese" %}
+            🔴 Obese
+        {% else %}
+            -
+        {% endif %}
+    </td>
+
+    <!-- ACTIONS -->
+    <td>
+    <div class="action-buttons">
+        <a href="/edit/{{ child.child_id }}" class="btn edit">Edit</a>
+        <a href="/delete/{{ child.child_id }}" class="btn delete">Delete</a>
+        <a href="/add_nutrition/{{ child.child_id }}" class="btn add">Add Nutrition</a>
+        <a href="/view_nutrition/{{ child.child_id }}" class="btn view">View Nutrition</a>
+    </div>
+</td>
+<td>
+    <a href="/prediction/{{ child.child_id }}">
+        <button>View Prediction</button>
+    </a>
+</td>
+
+</tr>
+{% endfor %}
+
+</table>
+<h3>Total Children: {{ total }}</h3>
+<h3>🔴 Severe Malnutrition: {{ severe_count }}</h3>
+<h3>🟠 Mild Malnutrition: {{ mild_count }}</h3>
+<a href="/logout" class="back-btn">Logout</a>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Child Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        /* TABLE DESIGN */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #4CAF50;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* BMI STATUS COLORS */
+        .underweight {
+            color: red;
+            font-weight: bold;
+        }
+
+        .normal {
+            color: green;
+            font-weight: bold;
+        }
+
+        .overweight {
+            color: orange;
+            font-weight: bold;
+        }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 8px 15px;
+            background: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background: #0b7dda;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Child Dashboard</h2>
+
+<div class="container">
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Weight</th>
+        <th>Height</th>
+        <th>BMI</th>
+        <th>Status</th>
+    </tr>
+
+    {% for child in children %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ child[1] }}</td>
+
+        <td>
+            {% set parts = child[2].split(' ') %}
+            
+            {% if parts[0] != '0' %}
+                {{ parts[0] }} Years
+            {% endif %}
+            
+            {% if parts|length > 2 and parts[2] != '0' %}
+                {{ parts[2] }} Months
+            {% endif %}
+        </td>
+
+        <td>{{ child[3] }}</td>
+        <td>{{ child[4] }}</td>
+        <td>{{ child[5] }}</td>
+
+        <td>{{ "%.2f"|format(child[6]) }}</td>
+
+        <!-- ✅ COLOR STATUS -->
+        <td class="
+            {% if child[7] == 'Underweight' %}underweight
+            {% elif child[7] == 'Normal' %}normal
+            {% else %}overweight
+            {% endif %}
+        ">
+            {{ child[7] }}
+        </td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+</div>
+
+</body>
+</html>

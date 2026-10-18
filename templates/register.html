@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            text-align: center;
+        }
+
+        .box {
+            width: 300px;
+            margin: auto;
+            margin-top: 100px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            width: 95%;
+            padding: 10px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        a {
+            text-decoration: none;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>Register</h2>
+
+    {% if message %}
+        <p style="color:red;">{{ message }}</p>
+    {% endif %}
+
+    <!-- ✅ FORM START -->
+    <form method="POST" action="/register">
+
+        <input type="text" name="username" placeholder="Enter Username" required>
+
+        <input type="password" name="password" placeholder="Enter Password" required>
+
+        <!-- 🔥 FIXED ROLE DROPDOWN -->
+        <select name="role" required>
+            <option value="">Select Role</option>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
+
+        <button type="submit">Register</button>
+
+    </form>
+    <!-- ✅ FORM END -->
+
+    <p>Already have an account? <a href="/login">Login here</a></p>
+
+</div>
+
+</body>
+</html>

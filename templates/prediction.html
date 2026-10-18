@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Growth Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            text-align: center;
+        }
+
+        .container {
+            width: 70%;
+            margin: auto;
+            margin-top: 50px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .box {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background: #e3f2fd;
+        }
+
+        .trend {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .risk {
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .safe {
+            color: green;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>AI Growth Prediction</h2>
+
+    <!-- Predicted Weight -->
+    <div class="box">
+        <h3>📈 Predicted Weight (Next 3 Months)</h3>
+        <p><b>{{ predicted }} kg</b></p>
+    </div>
+
+    <!-- Growth Trend -->
+    <div class="box">
+        <h3>📊 Growth Trend</h3>
+        <p class="trend">{{ trend }}</p>
+    </div>
+
+    <!-- Risk Level -->
+    <div class="box">
+        <h3>⚠ Risk Level</h3>
+        <p class="risk {% if risk == 'Healthy' %}safe{% endif %}">
+            {{ risk }}
+        </p>
+    </div>
+
+    <!-- Nutrition Alerts -->
+    <div class="box">
+        <h3>🥗 Nutrition Alerts</h3>
+        {% if alerts %}
+            <ul>
+                {% for alert in alerts %}
+                    <li>{{ alert }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No issues detected ✅</p>
+        {% endif %}
+    </div>
+
+    <!-- Meal Recommendation -->
+    <div class="box">
+        <h3>🍽 Personalized Recommendation</h3>
+        <p>{{ recommendation }}</p>
+    </div>
+
+    <br>
+    <a href="{{ url_for('admin_dashboard') }}">
+    <button>⬅ Back to Dashboard</button>
+</a>
+</div>
+
+</body>
+</html>

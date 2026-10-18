@@ -1,0 +1,22 @@
+<div class="form-container">
+<form method="POST" action="/add_nutrition/{{ child_id }}">
+    <head><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<form action="/add_nutrition" method="POST">
+
+    <input type="hidden" name="child_id" value="{{ child_id }}">
+
+    <input type="text" name="breakfast" placeholder="Enter Breakfast">
+
+    <input type="text" name="lunch" placeholder="Enter Lunch">
+
+    <input type="text" name="dinner" placeholder="Enter Dinner">
+
+    <input type="text" name="milk" placeholder="Milk (ml)">
+
+    <input type="text" name="water" placeholder="Water (ml)">
+
+    <button type="submit">Save</button>
+
+</form>
+
+</div>

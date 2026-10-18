@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<h2>User Dashboard</h2>
+<h3>Welcome, {{ session['user'] }}</h3>
+
+<!-- 🔍 SEARCH -->
+<form method="GET" action="/user_dashboard">
+    <input type="text" name="search" placeholder="Search child name">
+    <button type="submit">Search</button>
+</form>
+
+<a href="/chatbot" class="btn">AI Chatbot</a>
+
+<br>
+
+<a href="/nutrition_chart" class="btn">View Chart</a>
+
+<table>
+<tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>Weight</th>
+    <th>Height</th>
+    <th>BMI</th>
+    <th>Status</th>
+    <th>Nutrition</th>
+    <th>AI Prediction</th>
+</tr>
+
+{% for child in children %}
+<tr>
+
+    <!-- NAME -->
+    <td>{{ child.name }}</td>
+
+    <!-- AGE -->
+    <td>
+        {% set parts = child.age.split(' ') %}
+        
+        {% if parts[0] != '0' %}
+            {{ parts[0] }} Years
+        {% endif %}
+        
+        {% if parts|length > 2 and parts[2] != '0' %}
+            {{ parts[2] }} Months
+        {% endif %}
+    </td>
+
+    <!-- OTHER DETAILS -->
+    <td>{{ child.gender }}</td>
+    <td>{{ child.weight }}</td>
+    <td>{{ child.height }}</td>
+
+    <!-- ✅ BMI -->
+    <td>
+        {% if child.bmi is not none %}
+            {{ child.bmi }}
+        {% else %}
+            -
+        {% endif %}
+    </td>
+
+    <!-- ✅ MALNUTRITION STATUS -->
+    <td>
+        {% if child.status == "Severe Malnutrition" %}
+            🔴 Severe Malnutrition
+        {% elif child.status == "Mild Malnutrition" %}
+            🟠 Mild Malnutrition
+        {% elif child.status == "Normal" %}
+            🟢 Normal
+        {% elif child.status == "Overweight" %}
+            🟡 Overweight
+        {% elif child.status == "Obese" %}
+            🔴 Obese
+        {% else %}
+            -
+        {% endif %}
+    </td>
+
+    <!-- NUTRITION BUTTON -->
+    <td>
+        <a href="{{ url_for('view_nutrition', child_id=child.child_id) }}" class="btn">View</a>
+    </td>
+    
+    <td>
+    <a href="{{ url_for('prediction', child_id=child.child_id) }}">
+        <button style="background:#007bff; color:white; padding:6px 10px; border:none; border-radius:5px;">
+            📊 View Prediction
+        </button>
+    </a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+ <a href="/logout" class="back-btn">Logout</a>
+</body>
+</html>

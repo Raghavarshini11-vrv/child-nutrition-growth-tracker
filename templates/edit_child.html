@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Child</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            text-align: center;
+        }
+
+        .container {
+            width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        /* 🔥 SAME FIX AS ADD PAGE */
+        .age-row {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .age-row input {
+            flex: 1;
+            margin: 8px 0;
+        }
+
+        button {
+            width: 95%;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        a {
+            display: block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #2196F3;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Edit Child Details</h2>
+
+<form method="POST">
+
+    <input type="text" name="name" value="{{ child[1] }}" required>
+
+    <!-- ✅ FIXED AGE ROW -->
+    <div class="age-row">
+    <input type="number" name="years" placeholder="Age (Years)" min="0">
+    <input type="number" name="months" placeholder="Months" min="0" max="11">
+    </div>
+
+    <input type="text" name="gender" value="{{ child[3] }}" required>
+    <input type="number" name="weight" value="{{ child[4] }}" required>
+    <input type="number" name="height" value="{{ child[5] }}" required>
+
+    <button type="submit">Update</button>
+
+</form>
+
+<a href="/dashboard">← Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

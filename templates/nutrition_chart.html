@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nutrition Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+        }
+
+        .chart-container {
+            width: 400px;
+            height: 400px;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Child Nutrition Status Chart</h2>
+
+<!-- ✅ PIE CHART -->
+<div class="chart-container">
+    <canvas id="pieChart"></canvas>
+</div>
+
+<!-- ✅ BAR CHART -->
+<div class="chart-container">
+    <canvas id="barChart"></canvas>
+</div>
+
+<script>
+const pieCtx = document.getElementById('pieChart');
+
+new Chart(pieCtx, {
+    type: 'pie',
+    data: {
+        labels: [
+            'Severe Malnutrition',
+            'Mild Malnutrition',
+            'Normal',
+            'Overweight',
+            'Obese'
+        ],
+        datasets: [{
+            data: [
+                {{ severe }},
+                {{ mild }},
+                {{ normal }},
+                {{ overweight }},
+                {{ obese }}
+            ]
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false
+    }
+});
+</script>
+
+<script>
+const barCtx = document.getElementById('barChart');
+
+new Chart(barCtx, {
+    type: 'bar',
+    data: {
+        labels: [
+            'Severe Malnutrition',
+            'Mild Malnutrition',
+            'Normal',
+            'Overweight',
+            'Obese'
+        ],
+        datasets: [{
+            label: 'Children Count',
+            data: [
+                {{ severe }},
+                {{ mild }},
+                {{ normal }},
+                {{ overweight }},
+                {{ obese }}
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+<br>
+<a href="/admin_dashboard">⬅ Back</a>
+
+</body>
+</html>
